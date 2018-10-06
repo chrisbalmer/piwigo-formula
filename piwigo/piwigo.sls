@@ -1,4 +1,4 @@
-{% from tpldir ~ "/map.jinja" import piwigo with context %}
+{% from "piwigo/map.jinja" import piwigo with context %}
 
 {% set mysql_root_user = salt['pillar.get']('piwigo:mysql:root_user', 'root') %}
 {% set mysql_root_pass = salt['pillar.get']('piwigo:mysql:root_password', salt['grains.get']('server_id')) %}
