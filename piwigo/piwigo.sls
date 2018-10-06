@@ -7,7 +7,6 @@
 create_piwigo_db:
   mysql_database.present:
     - name: piwigo
-    - name: {{ database }}
     - connection_host: '{{ mysql_host }}'
     - connection_user: '{{ mysql_root_user }}'
     - connection_pass: '{{ mysql_root_pass }}'
