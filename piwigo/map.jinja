@@ -1,0 +1,10 @@
+{% set piwigo = salt['grains.filter_by']({
+    'Debian': {
+        'server': 'apache2',
+        'service': 'apache2'
+    },
+    'RedHat': {
+        'server': 'httpd',
+        'service': 'httpd'
+    },
+}, merge=salt['pillar.get']('piwigo')) %}
