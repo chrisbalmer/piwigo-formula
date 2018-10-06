@@ -1,10 +1,10 @@
 create_piwigo_db:
   mysql_database.present:
-    name: piwigo
+    - name: piwigo
 
 create_piwigo_dir:
   file.directory:
-    name: /var/www/html/piwigo
+    - name: /var/www/html/piwigo
 
 extract_piwigo:
   archive.extracted:
