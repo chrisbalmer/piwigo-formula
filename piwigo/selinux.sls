@@ -3,10 +3,8 @@ install_selinux_support:
     - name: policycoreutils-python
 
 configure_fcontext:
-  module.run:
-    - file.set_selinux_context:
-      - path: /var/www/html/piwigo/_data(/.*)?
-      - type: httpd_sys_rw_content_t
+  cmd.run:
+    - name: 'semanage fcontext -a -t httpd_sys_rw_content_t "/var/www/html/piwigo(/.*)?"'
     - watch:
       - archive: extract_piwigo
     - require:
