@@ -4,7 +4,7 @@ install_selinux_support:
 
 configure_fcontext:
   cmd.run:
-    - name: 'semanage fcontext -a -t httpd_sys_rw_content_t "/var/www/html/piwigo(/.*)?"'
+    - name: 'semanage fcontext -a -t httpd_sys_rw_content_t "/var/www/html/piwigo/_data(/.*)?"'
     - watch:
       - archive: extract_piwigo
     - require:
