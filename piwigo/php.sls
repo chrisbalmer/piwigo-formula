@@ -8,8 +8,8 @@ install_php_mysql:
 
 configure_php_timezone:
   file.managed:
-    - source: salt://piwigo/files/time.ini
-    - name: /etc/php.d/time.ini
+    - source: salt://piwigo/files/date.ini
+    - name: /etc/php.d/date.ini
     - user: root
     - group: root
     - mode: 644

@@ -4,3 +4,4 @@ include:
   - piwigo.mysql
   - piwigo.php
   - piwigo.piwigo
+  - piwigo.selinux

@@ -9,6 +9,8 @@ configure_fcontext:
       - type: httpd_sys_rw_content_t
     - watch:
       - archive: extract_piwigo
+    - require:
+      - pkg: install_selinux_support
 
 restorecon:
   module.run:
