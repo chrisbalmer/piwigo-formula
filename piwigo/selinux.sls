@@ -2,10 +2,18 @@ install_selinux_support:
   pkg.latest:
     - name: policycoreutils-python
 
-configure_fcontext:
+configure_fcontext_data:
   cmd.run:
     - name: 'semanage fcontext -a -t httpd_sys_rw_content_t "/var/www/html/piwigo/_data(/.*)?"'
-    - watch:
+    - onchanges:
+      - archive: extract_piwigo
+    - require:
+      - pkg: install_selinux_support
+
+configure_fcontext_upload:
+  cmd.run:
+    - name: 'semanage fcontext -a -t httpd_sys_rw_content_t "/var/www/html/piwigo/upload(/.*)?"'
+    - onchanges:
       - archive: extract_piwigo
     - require:
       - pkg: install_selinux_support
@@ -13,5 +21,6 @@ configure_fcontext:
 restorecon:
   cmd.run:
     - name: 'restorecon -R -v /var/www/html/piwigo'
-    - watch:
-      - cmd: configure_fcontext
+    - onchanges:
+      - cmd: configure_fcontext_data
+      - cmd: configure_fcontext_upload
