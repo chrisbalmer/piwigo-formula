@@ -16,4 +16,4 @@ restorecon:
       - path: /var/www/html/piwigo/_data
       - recursive: true
     - watch:
-      - module: configure_fcontext
+      - cmd: configure_fcontext
