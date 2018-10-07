@@ -11,9 +11,7 @@ configure_fcontext:
       - pkg: install_selinux_support
 
 restorecon:
-  module.run:
-    - file.restorecon:
-      - path: /var/www/html/piwigo/_data
-      - recursive: true
+  cmd.run:
+    - name: 'restorecon -R -v /var/www/html/piwigo'
     - watch:
       - cmd: configure_fcontext
